@@ -9,6 +9,9 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <StartupObject>NowAndNext.Program</StartupObject>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <VersionSuffix></VersionSuffix>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Version>$(VersionPrefix)$(VersionSuffix)</Version>
   </PropertyGroup>
 
   <ItemGroup>
