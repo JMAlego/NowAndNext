@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Microsoft.Office.Interop.Outlook;
 
 namespace NowAndNext
@@ -23,7 +19,6 @@ namespace NowAndNext
 
     internal class Schedule
     {
-        private const string DATE_FORMAT = "dd-MM-yyyy";
         private static readonly ISet<OlResponseStatus> IGNORED_STATUSES = new HashSet<OlResponseStatus>() { OlResponseStatus.olResponseDeclined, OlResponseStatus.olResponseTentative };
 
         private static Items? GetDefaultFolderItems()
@@ -66,8 +61,8 @@ namespace NowAndNext
 
             DateTime periodEnd = periodStart.Add(period);
 
-            string periodStartString = periodStart.ToString(DATE_FORMAT);
-            string periodEndString = periodEnd.ToString(DATE_FORMAT);
+            string periodStartString = periodStart.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
+            string periodEndString = periodEnd.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
 
             Items restrictedAppointments = appointments.Restrict($"[Start] >= '{periodStartString}' AND [Start] < '{periodEndString}'");
 

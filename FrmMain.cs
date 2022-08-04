@@ -1,6 +1,4 @@
-using System.Drawing.Drawing2D;
 using System.Text;
-using System.Drawing.Text;
 using System.Globalization;
 
 namespace NowAndNext
@@ -17,11 +15,11 @@ namespace NowAndNext
             clock = new(new(Font.FontFamily, Font.Size * 2, FontStyle.Bold));
         }
 
-
         private void PicClock_Paint(object sender, PaintEventArgs e)
         {
             clock.Draw(e.Graphics);
         }
+
         public static int GetIso8601WeekOfYear()
         {
             DateTime time = DateTime.Today;
@@ -61,7 +59,10 @@ namespace NowAndNext
                 }
             }
             LabelNowAndNextInfo.Text = sb.ToString();
-            LabelCurrentTime.Text = DateTime.Now.ToString($"yyyy-MM-dd HH:mm (CW{GetIso8601WeekOfYear()})");
+
+            string datePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
+            string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
+            LabelCurrentTime.Text = DateTime.Now.ToString($"{datePattern} {timeFormat} (CW{GetIso8601WeekOfYear()})");
         }
 
         private void UpdateClock(List<Event> ongoing, List<Event> upcoming)
