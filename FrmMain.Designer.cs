@@ -81,6 +81,7 @@
             this.LabelNowAndNextInfo.Size = new System.Drawing.Size(311, 110);
             this.LabelNowAndNextInfo.TabIndex = 2;
             this.LabelNowAndNextInfo.Text = "Now";
+            this.LabelNowAndNextInfo.UseMnemonic = false;
             this.LabelNowAndNextInfo.DoubleClick += new System.EventHandler(this.LabelNowAndNextInfo_DoubleClick);
             // 
             // FrmMain
