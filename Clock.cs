@@ -37,9 +37,9 @@ namespace NowAndNext
         {
             if (events.Any())
             {
+                eventTimes.RemoveAll(x => !events.Contains(x));
                 foreach (DateTime eventTime in events)
                 {
-                    eventTimes.RemoveAll(x => !events.Contains(x));
                     if (!eventTimes.Contains(eventTime))
                     {
                         eventTimes.Add(eventTime);
