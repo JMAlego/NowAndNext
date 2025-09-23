@@ -59,6 +59,9 @@ You can build this project using Visual Studio 2022 or `msbuild`, but not
 `dotnet`. COM interaction isn't well supported in the `dotnet` CLI builder
 hence the dependency on a more Visual Studio adjacent build tool.
 
+1. `dotnet restore NowAndNext.csproj`
+2. `msbuild NowAndNext.csproj`
+
 
 # License
 
