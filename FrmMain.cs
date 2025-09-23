@@ -1,5 +1,6 @@
 using System.Text;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace NowAndNext
 {
@@ -37,28 +38,28 @@ namespace NowAndNext
             StringBuilder sb = new();
             if (ongoing.Any())
             {
-                sb.Append("Now:\n");
+                sb.AppendLine("Now:");
                 foreach (Event entry in ongoing)
                 {
-                    sb.Append($"    {entry.Subject}\n");
+                    sb.AppendLine($" •  {entry.Subject}");
                 }
             }
             DateTime? nextStartTime = null;
             if (upcoming.Any())
             {
-                sb.Append("Next:\n");
+                sb.AppendLine("Next:");
                 foreach (Event entry in upcoming)
                 {
-                    sb.Append("    ");
+                    sb.Append(" •  ");
                     if (nextStartTime is not null)
                     {
                         sb.Append($"+{entry.StartTime.Subtract(nextStartTime ?? DateTime.Now).Minutes}m ");
                     }
-                    sb.Append($"{entry.Subject}\n");
+                    sb.AppendLine($"{entry.Subject}");
                     nextStartTime ??= entry.StartTime;
                 }
             }
-            LabelNowAndNextInfo.Text = sb.ToString();
+            TextBoxUpcomingMeetings.Text = sb.ToString();
 
             string datePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
             string timeFormat = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
