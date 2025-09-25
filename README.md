@@ -42,8 +42,8 @@ Releases come in three flavours:
 - Standalone x64
 - Framework Dependant / Portable
 
-To use the Framework Dependant version you'll need to have [.NET 6 Desktop
-Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime)
+To use the Framework Dependant version you'll need to have [.NET 8 Desktop
+Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime)
 installed.
 
 Currently only Windows builds are provided as the application relies on the COM

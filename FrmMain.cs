@@ -35,18 +35,18 @@ namespace NowAndNext
         private void UpdateText(List<Event> ongoing, List<Event> upcoming)
         {
             StringBuilder sb = new();
-            if (ongoing.Any())
+            if (ongoing.Count != 0)
             {
-                sb.Append("Now:\n");
+                sb.AppendLine("Now:");
                 foreach (Event entry in ongoing)
                 {
-                    sb.Append($"    {entry.Subject}\n");
+                    sb.AppendLine($"    {entry.Subject}");
                 }
             }
             DateTime? nextStartTime = null;
-            if (upcoming.Any())
+            if (upcoming.Count != 0)
             {
-                sb.Append("Next:\n");
+                sb.AppendLine("Next:");
                 foreach (Event entry in upcoming)
                 {
                     sb.Append("    ");
@@ -54,7 +54,7 @@ namespace NowAndNext
                     {
                         sb.Append($"+{entry.StartTime.Subtract(nextStartTime ?? DateTime.Now).Minutes}m ");
                     }
-                    sb.Append($"{entry.Subject}\n");
+                    sb.AppendLine($"{entry.Subject}");
                     nextStartTime ??= entry.StartTime;
                 }
             }
