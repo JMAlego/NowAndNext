@@ -1,13 +1,22 @@
-using System.Text;
+using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Text;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace NowAndNext
 {
     public partial class FrmMain : Form
     {
+        // Extended window style constants (from WinUser.h)
+        const int GWL_EXSTYLE = -20;
+        const int WS_EX_TOPMOST = 0x00000008;
+
         private readonly Clock clock;
         private DateTime LastUpdateTime = DateTime.Now;
 
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetWindowLongPtr(IntPtr hWnd, int nIndex);
         public FrmMain()
         {
             InitializeComponent();
@@ -103,6 +112,13 @@ namespace NowAndNext
 
             UpdateClock(ongoingEvents, upcomingEvents);
             UpdateText(ongoingEvents, upcomingEvents);
+            IntPtr exStyle = GetWindowLongPtr(this.Handle, GWL_EXSTYLE);
+            bool ontop = ((long)exStyle & WS_EX_TOPMOST) == WS_EX_TOPMOST;
+            if (ontop != checkBox1.Checked)
+            {
+                ToggleTopMost();
+            }
+
         }
 
         private void TimerTick_Tick(object sender, EventArgs e)
@@ -118,7 +134,7 @@ namespace NowAndNext
 
         private void ToggleTopMost()
         {
-            TopMost = !TopMost;
+            checkBox1.Checked = !checkBox1.Checked;
         }
 
         private void FrmMain_DoubleClick(object sender, EventArgs e)
@@ -140,5 +156,14 @@ namespace NowAndNext
         {
             ToggleTopMost();
         }
-    }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox? cb = sender as CheckBox;
+            if (cb != null)
+            {
+                TopMost = cb.Checked;
+            }
+        }
+   }
 }
