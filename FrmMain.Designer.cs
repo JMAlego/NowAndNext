@@ -28,78 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.PicClock = new System.Windows.Forms.PictureBox();
-            this.TimerTick = new System.Windows.Forms.Timer(this.components);
-            this.LabelCurrentTime = new System.Windows.Forms.Label();
-            this.LabelNowAndNextInfo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PicClock)).BeginInit();
-            this.SuspendLayout();
+            PicClock = new PictureBox();
+            TimerTick = new System.Windows.Forms.Timer(components);
+            LabelCurrentTime = new Label();
+            TextBoxUpcomingMeetings = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)PicClock).BeginInit();
+            SuspendLayout();
             // 
             // PicClock
             // 
-            this.PicClock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PicClock.Location = new System.Drawing.Point(12, 12);
-            this.PicClock.Name = "PicClock";
-            this.PicClock.Size = new System.Drawing.Size(138, 138);
-            this.PicClock.TabIndex = 0;
-            this.PicClock.TabStop = false;
-            this.PicClock.Paint += new System.Windows.Forms.PaintEventHandler(this.PicClock_Paint);
-            this.PicClock.DoubleClick += new System.EventHandler(this.PicClock_DoubleClick);
+            PicClock.Location = new Point(12, 12);
+            PicClock.Name = "PicClock";
+            PicClock.Size = new Size(138, 138);
+            PicClock.TabIndex = 0;
+            PicClock.TabStop = false;
+            PicClock.Paint += PicClock_Paint;
+            PicClock.DoubleClick += PicClock_DoubleClick;
             // 
             // TimerTick
             // 
-            this.TimerTick.Enabled = true;
-            this.TimerTick.Tick += new System.EventHandler(this.TimerTick_Tick);
+            TimerTick.Enabled = true;
+            TimerTick.Tick += TimerTick_Tick;
             // 
             // LabelCurrentTime
             // 
-            this.LabelCurrentTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelCurrentTime.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelCurrentTime.Location = new System.Drawing.Point(162, 15);
-            this.LabelCurrentTime.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
-            this.LabelCurrentTime.Name = "LabelCurrentTime";
-            this.LabelCurrentTime.Size = new System.Drawing.Size(311, 19);
-            this.LabelCurrentTime.TabIndex = 1;
-            this.LabelCurrentTime.Text = "LabelCurrentTime";
-            this.LabelCurrentTime.DoubleClick += new System.EventHandler(this.LabelCurrentTime_DoubleClick);
+            LabelCurrentTime.Font = new Font("Segoe UI", 9.75F);
+            LabelCurrentTime.Location = new Point(175, 15);
+            LabelCurrentTime.Margin = new Padding(3, 6, 3, 6);
+            LabelCurrentTime.Name = "LabelCurrentTime";
+            LabelCurrentTime.Size = new Size(298, 19);
+            LabelCurrentTime.TabIndex = 1;
+            LabelCurrentTime.Text = "LabelCurrentTime";
+            LabelCurrentTime.DoubleClick += LabelCurrentTime_DoubleClick;
             // 
-            // LabelNowAndNextInfo
+            // TextBoxUpcomingMeetings
             // 
-            this.LabelNowAndNextInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelNowAndNextInfo.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LabelNowAndNextInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LabelNowAndNextInfo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelNowAndNextInfo.Location = new System.Drawing.Point(162, 40);
-            this.LabelNowAndNextInfo.Margin = new System.Windows.Forms.Padding(9, 0, 3, 0);
-            this.LabelNowAndNextInfo.Name = "LabelNowAndNextInfo";
-            this.LabelNowAndNextInfo.Padding = new System.Windows.Forms.Padding(4);
-            this.LabelNowAndNextInfo.Size = new System.Drawing.Size(311, 110);
-            this.LabelNowAndNextInfo.TabIndex = 2;
-            this.LabelNowAndNextInfo.Text = "Now";
-            this.LabelNowAndNextInfo.UseMnemonic = false;
-            this.LabelNowAndNextInfo.DoubleClick += new System.EventHandler(this.LabelNowAndNextInfo_DoubleClick);
+            TextBoxUpcomingMeetings.AcceptsReturn = true;
+            TextBoxUpcomingMeetings.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TextBoxUpcomingMeetings.BorderStyle = BorderStyle.FixedSingle;
+            TextBoxUpcomingMeetings.Location = new Point(175, 42);
+            TextBoxUpcomingMeetings.Multiline = true;
+            TextBoxUpcomingMeetings.Name = "TextBoxUpcomingMeetings";
+            TextBoxUpcomingMeetings.ReadOnly = true;
+            TextBoxUpcomingMeetings.ScrollBars = ScrollBars.Both;
+            TextBoxUpcomingMeetings.ShortcutsEnabled = false;
+            TextBoxUpcomingMeetings.Size = new Size(297, 108);
+            TextBoxUpcomingMeetings.TabIndex = 2;
+            TextBoxUpcomingMeetings.WordWrap = false;
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 161);
-            this.Controls.Add(this.LabelNowAndNextInfo);
-            this.Controls.Add(this.LabelCurrentTime);
-            this.Controls.Add(this.PicClock);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmMain";
-            this.Text = "Now & Next";
-            this.TopMost = true;
-            this.Load += new System.EventHandler(this.FrmMain_Load);
-            this.DoubleClick += new System.EventHandler(this.FrmMain_DoubleClick);
-            ((System.ComponentModel.ISupportInitialize)(this.PicClock)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(484, 161);
+            Controls.Add(TextBoxUpcomingMeetings);
+            Controls.Add(LabelCurrentTime);
+            Controls.Add(PicClock);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(178, 200);
+            Name = "FrmMain";
+            Text = "Now & Next";
+            TopMost = true;
+            Load += FrmMain_Load;
+            DoubleClick += FrmMain_DoubleClick;
+            ((System.ComponentModel.ISupportInitialize)PicClock).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -108,6 +104,6 @@
         private PictureBox PicClock;
         private System.Windows.Forms.Timer TimerTick;
         private Label LabelCurrentTime;
-        private Label LabelNowAndNextInfo;
+        private TextBox TextBoxUpcomingMeetings;
     }
 }
